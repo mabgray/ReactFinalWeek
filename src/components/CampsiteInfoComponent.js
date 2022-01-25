@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
 
-    function renderCampsite({campsite}){
+    function RenderCampsite({campsite}){
 
         return (
             <div className="col-md-5 m-1">
@@ -18,7 +18,7 @@ import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
     }
 
-   function renderComments({comments}){
+   function RenderComments({comments}){
         console.log(comments);
         if(comments){
             return (
