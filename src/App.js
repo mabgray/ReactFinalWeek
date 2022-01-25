@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 
 import Main from './components/MainComponent';
@@ -17,10 +17,11 @@ import Main from './components/MainComponent';
 
     render() {
         return (
-            <div className="App">
-              <Main />
-
-            </div>
+            <BrowserRouter>
+                <div className="App">
+                  <Main />  
+                </div>
+            </BrowserRouter>
         );
     }
 
