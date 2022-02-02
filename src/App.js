@@ -12,7 +12,7 @@ import Main from './components/MainComponent';
     class App extends Component {
        
 
-
+        const store = ConfigureStore();
 
 
 
