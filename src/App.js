@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import './App.css';
-
+import { Provider } from 'react-redux';
+import { ConfigureStore } from './redux/configureStore';
 import Main from './components/MainComponent';
 
 
@@ -17,11 +18,13 @@ import Main from './components/MainComponent';
 
     render() {
         return (
+            <Provider store={store}>
             <BrowserRouter>
                 <div className="App">
-                  <Main />  
+                    <Main />
                 </div>
             </BrowserRouter>
+        </Provider>
         );
     }
 
