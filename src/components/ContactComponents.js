@@ -120,11 +120,7 @@ class Contact extends Component{
                                             maxLength: maxLength(15)
                                         }}
                                     />
-                                     validators={{
-                                            required,
-                                            minLength: minLength(2),
-                                            maxLength: maxLength(15)
-                                        }}
+                                     
                                 </Col>
                             </Row>
                             <Row className="form-group">
