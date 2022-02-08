@@ -10,7 +10,7 @@ import {
 	ModalHeader,
 	ModalBody,
 	Button,
-    Label
+	Label
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
@@ -37,10 +37,8 @@ class CommentForm extends Component {
 	}
 
 	handleSubmit(values) {
-        this.toggleModal();
-        this.props.addComment(this.props.campsiteId, values.rating, values.author, values.text);
-		
-    
+		this.toggleModal();
+		this.props.postComment(this.props.campsiteId, values.rating, values.author, values.text);
 	}
 
 	render() {
@@ -56,7 +54,13 @@ class CommentForm extends Component {
 						<LocalForm onSubmit={(values) => this.handleSubmit(values)}>
 							<div className="form-group">
 								<label htmlFor="rating">Rating</label>
-								<Control.select className="form-control" model=".rating" name="rating" id="rating" defaultValue="1">
+								<Control.select
+									className="form-control"
+									model=".rating"
+									name="rating"
+									id="rating"
+									defaultValue="1"
+								>
 									<option>1</option>
 									<option>2</option>
 									<option>3</option>
@@ -108,8 +112,7 @@ function RenderCampsite({ campsite }) {
 	return (
 		<div className="col-md-5 m-1">
 			<Card>
-			
-			<CardImg top src={baseUrl + campsite.image} alt={campsite.name} />
+				<CardImg top src={baseUrl + campsite.image} alt={campsite.name} />
 				<CardBody>
 					<CardText>{campsite.description}</CardText>
 				</CardBody>
@@ -118,7 +121,7 @@ function RenderCampsite({ campsite }) {
 	);
 }
 
-function RenderComments({comments, addComment, campsiteId})  {
+function RenderComments({ comments, postComment, campsiteId }) {
 	console.log(comments);
 	if (comments) {
 		return (
@@ -139,7 +142,7 @@ function RenderComments({comments, addComment, campsiteId})  {
 						</div>
 					);
 				})}
-			    <CommentForm campsiteId={campsiteId} addComment={addComment} />
+				<CommentForm campsiteId={campsiteId} postComment={postComment} />
 			</div>
 		);
 	}
@@ -148,25 +151,25 @@ function RenderComments({comments, addComment, campsiteId})  {
 
 function CampsiteInfo(props) {
 	if (props.isLoading) {
-        return (
-            <div className="container">
-                <div className="row">
-                    <Loading />
-                </div>
-            </div>
-        );
-    }
-    if (props.errMess) {
-        return (
-            <div className="container">
-                <div className="row">
-                    <div className="col">
-                        <h4>{props.errMess}</h4>
-                    </div>
-                </div>
-            </div>
-        );
-    }
+		return (
+			<div className="container">
+				<div className="row">
+					<Loading />
+				</div>
+			</div>
+		);
+	}
+	if (props.errMess) {
+		return (
+			<div className="container">
+				<div className="row">
+					<div className="col">
+						<h4>{props.errMess}</h4>
+					</div>
+				</div>
+			</div>
+		);
+	}
 	if (props.campsite) {
 		return (
 			<div className="container">
@@ -185,11 +188,10 @@ function CampsiteInfo(props) {
 				<div className="row">
 					<RenderCampsite campsite={props.campsite} />
 					<RenderComments
-                        comments={props.comments} 
-                        addComment={props.addComment}
-                        campsiteId={props.campsite.id}
-
-                     />
+						comments={props.comments}
+						postComment={props.postComment}
+						campsiteId={props.campsite.id}
+					/>
 				</div>
 			</div>
 		);
