@@ -12,6 +12,7 @@ function RenderCard({item, isLoading, errMess}) {
     if (errMess) {
         return <h4>{errMess}</h4>;
     }
+    console.log(item.image);
     return (
         <Card>
            <CardImg src={baseUrl + item.image} alt={item.name} />
