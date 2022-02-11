@@ -55,6 +55,7 @@ class CommentForm extends Component {
 						<LocalForm onSubmit={(values) => this.handleSubmit(values)}>
 							<div className="form-group">
 								<label htmlFor="rating">Rating</label>
+								
 								<Control.select
 									className="form-control"
 									model=".rating"
@@ -67,6 +68,7 @@ class CommentForm extends Component {
 									<option>3</option>
 									<option>4</option>
 									<option>5</option>
+									
 								</Control.select>
 							</div>
 							<div classsName="form-group">
